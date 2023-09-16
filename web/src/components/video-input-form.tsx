@@ -1,13 +1,13 @@
-import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react"
-import { FileVideo, Upload } from "lucide-react"
-import { fetchFile } from "@ffmpeg/util"
+import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
+import { FileVideo, Upload } from "lucide-react";
+import { fetchFile } from "@ffmpeg/util";
 
-import { Button } from "./ui/button"
-import { Separator } from "./ui/separator"
-import { Textarea } from "./ui/textarea"
-import { Label } from "./ui/label"
-import { getFFmpeg } from "@/lib/ffmpeg"
-import { api } from "@/lib/axios"
+import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
+import { Textarea } from "./ui/textarea";
+import { Label } from "./ui/label";
+import { getFFmpeg } from "@/lib/ffmpeg";
+import { api } from "@/lib/axios";
 
 type Status = "waiting" | "converting" | "uploading" | "generating" | "success";
 
@@ -19,7 +19,7 @@ const statusMessages = {
     converting: "Convertendo...",
     generating: "Transcrevendo...",
     uploading: "Carregando...",
-    success: "Successo!"
+    success: "Sucesso!"
 };
 
 export function VideoInputForm({ onVideoUploaded }: VideoInputFormProps){
@@ -49,18 +49,18 @@ export function VideoInputForm({ onVideoUploaded }: VideoInputFormProps){
         });
 
         await ffmpeg?.exec([
-            '-i',
-            'input.mp4',
-            '-map',
-            '0:a',
-            '-b:a',
-            '20k',
-            '-acodec',
-            'libmp3lame',
-            'output.mp3'
+            "-i",
+            "input.mp4",
+            "-map",
+            "0:a",
+            "-b:a",
+            "20k",
+            "-acodec",
+            "libmp3lame",
+            "output.mp3"
         ]);
 
-        const data = await ffmpeg?.readFile('output.mp3');
+        const data = await ffmpeg?.readFile("output.mp3");
 
         const audioFileBlob = new Blob([data!], { type: "audio/mpeg" });
         const audioFile = new File([audioFileBlob], "audio.mp3", {
@@ -101,7 +101,6 @@ export function VideoInputForm({ onVideoUploaded }: VideoInputFormProps){
 
         setStatus("success");
 
-        console.log("Finalizou");
         onVideoUploaded(videoId);
     }
 
@@ -154,5 +153,5 @@ export function VideoInputForm({ onVideoUploaded }: VideoInputFormProps){
                 ) : statusMessages[status]}
             </Button>
         </form>
-    )
+    );
 }

@@ -44,5 +44,5 @@ export function PromptSelect({ onPromptSelected }: PromptSelectProps){
                 ))}
             </SelectContent>
         </Select>
-    )
+    );
 }

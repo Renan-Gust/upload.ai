@@ -1,8 +1,8 @@
 import { FastifyInstance } from "fastify";
-import { z } from 'zod';
-import { streamToResponse, OpenAIStream } from 'ai';
+import { z } from "zod";
+import { streamToResponse, OpenAIStream } from "ai";
 
-import { prisma } from '../lib/prisma';
+import { prisma } from "../lib/prisma";
 import { openai } from "../lib/openai";
 
 export async function generateAICompletionRoute(app: FastifyInstance) {
@@ -25,13 +25,13 @@ export async function generateAICompletionRoute(app: FastifyInstance) {
             return reply.status(400).send({ error: "Video transcription was not generated yet." });
         }
 
-        const promptMessage = prompt.replace('{transcription}', video.transcription);
+        const promptMessage = prompt.replace("{transcription}", video.transcription);
 
         const response = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo-16k',
+            model: "gpt-3.5-turbo-16k",
             temperature,
             messages: [
-                { role: 'user', content: promptMessage }
+                { role: "user", content: promptMessage }
             ],
             stream: true,
         });

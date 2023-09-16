@@ -1,22 +1,22 @@
-import { useState } from "react"
-import { Github, Wand2 }  from "lucide-react"
+import { useState } from "react";
+import { Github, Wand2 }  from "lucide-react";
 import { useCompletion } from "ai/react";
 
-import { Button } from "./components/ui/button"
-import { Separator } from "./components/ui/separator"
-import { Textarea } from "./components/ui/textarea"
-import { Label } from "./components/ui/label"
-import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "./components/ui/select"
-import { Slider } from "./components/ui/slider"
-import { VideoInputForm } from "./components/video-input-form"
-import { PromptSelect } from "./components/promp-select"
+import { Button } from "./components/ui/button";
+import { Separator } from "./components/ui/separator";
+import { Textarea } from "./components/ui/textarea";
+import { Label } from "./components/ui/label";
+import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "./components/ui/select";
+import { Slider } from "./components/ui/slider";
+import { VideoInputForm } from "./components/video-input-form";
+import { PromptSelect } from "./components/prompt-select";
 
 function App() {
     const [temperature, setTemperature] = useState(0.5);
     const [videoId, setVideoId] = useState<string | null>(null);
 
     const { input, setInput, handleInputChange, handleSubmit, completion, isLoading } = useCompletion({
-        api: "http://localhost:333/ai/complete",
+        api: "http://localhost:3333/ai/complete",
         body: {
             videoId,
             temperature
@@ -61,7 +61,7 @@ function App() {
                     </div>
 
                     <p className="text-sm text-muted-foreground">
-                        Lembre-se: você pode utilizar a variável <code className="text-violet-400">{'{transcription}'}</code> no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado.
+                        Lembre-se: você pode utilizar a variável <code className="text-violet-400">{"{transcription}"}</code> no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado.
                     </p>
                 </div>
 
@@ -114,7 +114,7 @@ function App() {
                 </aside>
             </main>
         </div>
-    )
+    );
 }
 
-export default App
+export default App;

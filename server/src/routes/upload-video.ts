@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { fastifyMultipart } from '@fastify/multipart';
+import { fastifyMultipart } from "@fastify/multipart";
 
-import { prisma } from '../lib/prisma';
+import { prisma } from "../lib/prisma";
 import path from "path";
 import fs from "fs";
 import { pipeline } from "stream";
