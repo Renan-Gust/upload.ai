@@ -6,10 +6,13 @@ import { uploadVideoRoute } from "./routes/upload-video";
 import { createTranscriptionRoute } from "./routes/create-transcription";
 import { generateAICompletionRoute } from "./routes/generate-ai-completion";
 
-const app = fastify();
+const app = fastify({
+    bodyLimit: 25 * 1024 * 1024 // por exemplo, para 25MB
+});
 
 app.register(fastifyCors, {
-    origin: "*"
+    origin: "*",
+    preflight: true
 });
 
 app.register(getAllPromptsRoute);
