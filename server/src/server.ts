@@ -1,5 +1,5 @@
 import { fastify } from "fastify";
-import { fastifyCors } from "@fastify/cors";
+// import { fastifyCors } from "@fastify/cors";
 
 import { getAllPromptsRoute } from "./routes/get-all-prompts";
 import { uploadVideoRoute } from "./routes/upload-video";
@@ -10,10 +10,10 @@ const app = fastify({
     bodyLimit: 25 * 1024 * 1024 // 25mb
 });
 
-app.register(fastifyCors, {
-    origin: "*",
-    preflight: true
-});
+// app.register(fastifyCors, {
+//     origin: "*",
+//     preflight: true
+// });
 
 app.register(getAllPromptsRoute);
 app.register(uploadVideoRoute);
