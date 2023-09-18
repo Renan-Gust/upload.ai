@@ -1,5 +1,5 @@
 import { fastify } from "fastify";
-import { fastifyCors } from "@fastify/cors";
+import fastifyCors from "@fastify/cors";
 
 import { getAllPromptsRoute } from "./routes/get-all-prompts";
 import { uploadVideoRoute } from "./routes/upload-video";
@@ -7,7 +7,7 @@ import { createTranscriptionRoute } from "./routes/create-transcription";
 import { generateAICompletionRoute } from "./routes/generate-ai-completion";
 
 const app = fastify({
-    bodyLimit: 25 * 1024 * 1024 // por exemplo, para 25MB
+    bodyLimit: 25 * 1024 * 1024 // 25mb
 });
 
 app.register(fastifyCors, {
