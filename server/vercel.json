@@ -11,14 +11,5 @@
             "src": "(.*)",
             "dest": "src/server.ts"
         }
-    ],
-    "headers": [
-        {
-          "source": "(.*)",
-          "headers": [
-            { "key": "Access-Control-Allow-Origin", "value": "*" },
-            { "key": "Access-Control-Allow-Methods", "value": "GET, DELETE ,POST ,PUT" }
-          ]
-        }
-      ]
+    ]
 }
